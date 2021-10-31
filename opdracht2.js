@@ -1,4 +1,4 @@
-const inventory = [
+const inventory2 = [
     {
         type: '43PUS6504/12',
         name: '4K TV',
@@ -161,72 +161,52 @@ const inventory = [
     },
 ];
 
-// Opdracht 1 - Array Methoden
+// Opdracht 2.A Hoeveel tv's zijn er al verkocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
 
-// Opdracht 1.A: Gebruik een array-methode om een array te maken met alle tv-type namen.
-// INPUT
-// - Tv type parameter uit array inventory
-// OUTPUT
-// - Nieuwe array met alleen de tv types als waarden
-// STAPPENPLAN
-// [x] Maak nieuwe array met .map methode die tv type returned.
-// [x] Vang de nieuwe array op in een nieuwe variabel en log deze in de console
-
-const tvType = inventory.map((inventory) => {
-    return inventory.type;
-})
-console.log(tvType);
-
-// Opdracht 1 - Array Methoden
-
-// Opdracht 1.B: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die volledig uitverkocht
-//   zijn.
-// INPUT
-// - Argument uit parameter "originalStock" uit array inventory
-// - Argument uit parameter "sold" uit array inventory
-// OUTPUT
-// - Nieuwe array met de tv's (incl. alle onderliggende objecten) waar geen voorraad van is
-// STAPPENPLAN
-// [x] Maak nieuwe array met .filter methode die het verschil in "sold" en "orginalStock returned
-// [x] Vang de nieuwe array op in een variabel en log deze in de console
-
-const soldOut = inventory.filter((inventory) => {
-    return inventory.sold === inventory.originalStock || inventory.sold > inventory.originalStock;
+const tvSold = inventory2.map((inventory2) => {
+    return inventory2.sold;
 })
 
-console.log(soldOut);
+// console.log(tvSold);
 
-// Opdracht 1 - Array Methoden
-
-// Opdracht 1.C: Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die over AmbiLight beschikken
-// INPUT
-// - Argument (boolean) uit parameter "Ambilight" uit array inventory
-// OUTPUT
-// - Nieuwe array met alleen de tv's (incl. alle onderliggende objecten) die beschikken over Ambilight
-// STAPPENPLAN
-// [x] Maak nieuwe array met .filter methode die tv's returned die ambilight hebben (true)
-// [x] Vang de nieuwe array op een in variabel en log deze in de console
-
-const hasAmbilight = inventory.filter((inventory) => {
-    return inventory.options.ambiLight;
-})
-console.log(hasAmbilight);
-
-// Opdracht 1 - Array Methoden
-
-// Opdracht 1.D: Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert. Log de uitkomst.
-// INPUT
-// - Argument uit parameter "price" uit array inventory
-// OUTPUT
-// - Aangepaste array met alle tv's gesorteerd op prijs van laag naar hoog
-// STAPPENPLAN
-// [x] Schrijf een functie met de .sort methode die sorteert op prijs van laag naar hoog
-// [x] return het resultaat van de methode in de functie zodat het in de global scope gelogt kant worden
-// [x] log de functie met de return parameter inventory
-
-function priceLowestToHighest(inventory){
-     inventory.sort((a, b)=> a.price - b.price);
-     return inventory;
+let nrOfTvSold = 0;
+for (let i = 0; i < tvSold.length; i++) {
+    nrOfTvSold += tvSold[i];
 }
 
-console.log(priceLowestToHighest(inventory));
+console.log(nrOfTvSold);
+
+// opdracht 2.B Zorg ervoor dat dit aantal _in het groen_ wordt weergegeven op de pagina.
+
+const qtySold = document.getElementById("qty-sold");
+console.log(qtySold);
+qtySold.textContent = nrOfTvSold;
+
+// opdracht 2.C Hoeveel tv's heeft Tech It Easy ingekocht? Schrijf een script dat dit berekent. Log de uitkomst.
+
+const tvStockBought = inventory2.map((inventory2) => {
+    return inventory2.originalStock;
+})
+
+// console.log(tvStockBought);
+
+let nrOfTvStockBought = 0;
+for (let i = 0; i < tvStockBought.length; i++) {
+    nrOfTvStockBought += tvStockBought[i];
+}
+
+console.log(nrOfTvStockBought);
+
+// opdracht 2.D Zorg ervoor dat dit aantal _in het blauw_ wordt weergegeven op de pagina.
+
+const qtyBought = document.getElementById("qty-bought");
+qtyBought.textContent = nrOfTvStockBought;
+
+// opdracht 2.E Geef _in het rood_ weer hoeveel tv's er nog verkocht moeten worden.
+
+const yetToSell = nrOfTvStockBought - nrOfTvSold
+console.log(yetToSell);
+
+const qtySell = document.getElementById("qty-sell");
+qtySell.textContent = yetToSell;
+
