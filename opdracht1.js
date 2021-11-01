@@ -212,6 +212,7 @@ const hasAmbilight = inventory.filter((inventory) => {
 })
 console.log(hasAmbilight);
 
+
 // Opdracht 1 - Array Methoden
 
 // Opdracht 1.D: Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert. Log de uitkomst.

@@ -1,4 +1,4 @@
-const inventory2 = [
+const inventory3 = [
     {
         type: '43PUS6504/12',
         name: '4K TV',
@@ -161,55 +161,51 @@ const inventory2 = [
     },
 ];
 
-// Opdracht 2.A Hoeveel tv's zijn er al verkocht? Schrijf een script dat dit berekent. Log de uitkomst in de console.
+console.log(inventory3);
 
-const tvSold = inventory2.map((inventory2) => {
-    return inventory2.sold;
+// Opdracht 3.A Gebruik een array-methode om alle tv merken (zoals `Philips`, `NIKKEI`, etc.) in een lijst op de
+//   pagina weer te geven. Zorg ervoor dat dit ook zou werken als we 200 tv's in onze array zouden hebben staan. Dat er
+//   dubbele namen in zitten, is niet erg.
+
+const tvBrands = inventory3.map((inventory3) => {
+    return inventory3.brand;
 })
 
-console.log(tvSold);
+console.log(tvBrands);
 
-let nrOfTvSold = 0;
-for (let i = 0; i < tvSold.length; i++) {
-    nrOfTvSold += tvSold[i];
+ul = document.createElement("ul");
+document.getElementById("qty-brands").appendChild(ul);
+
+tvBrands.forEach((tvBrands) => {
+    let li = document.createElement("li")
+    ul.appendChild(li);
+    li.innerHTML += tvBrands;
+    return tvBrands
+});
+
+// Opdracht 4b:** Schrijf de code uit 4a om naar een functie die een array met tv-objecten verwacht. Het is handig om
+//   onze scripts als functies op te zetten, zodat we ze gemakkelijk kunnen hergebruiken. _Tip_: vergeet deze functie
+//   -declaratie niet aan te roepen!
+
+function tvBrandsObjects(tvObjects) {
+    inventory3.map((inventory3) => {
+        return inventory3.brand;
+    });
+    inventory3.brand.forEach(() => {
+        let li = document.createElement("li")
+        ul.appendChild(li);
+        li.innerHTML += inventory3.brand = tvObjects;
+        return tvObjects;
+    })
+    return tvObjects;
 }
 
-console.log(nrOfTvSold);
+const TvObjectsQty = tvBrandsObjects(tv)
 
-// opdracht 2.B Zorg ervoor dat dit aantal _in het groen_ wordt weergegeven op de pagina.
+ul2 = document.createElement("ul");
+document.getElementById("qty-brands-ojbects").appendChild(ul);
 
-const qtySold = document.getElementById("qty-sold");
-console.log(qtySold);
-qtySold.textContent = nrOfTvSold;
+// const tvOjbecs
+// console.log(tvBrandsObjects);
 
-// opdracht 2.C Hoeveel tv's heeft Tech It Easy ingekocht? Schrijf een script dat dit berekent. Log de uitkomst.
-
-const tvStockBought = inventory2.map((inventory2) => {
-    return inventory2.originalStock;
-})
-
-console.log(tvStockBought);
-
-let nrOfTvStockBought = 0;
-for (let i = 0; i < tvStockBought.length; i++) {
-    nrOfTvStockBought += tvStockBought[i];
-}
-
-console.log(nrOfTvStockBought);
-
-// opdracht 2.D Zorg ervoor dat dit aantal _in het blauw_ wordt weergegeven op de pagina.
-
-const qtyBought = document.getElementById("qty-bought");
-console.log(qtyBought);
-qtyBought.textContent = nrOfTvStockBought;
-
-// opdracht 2.E Geef _in het rood_ weer hoeveel tv's er nog verkocht moeten worden.
-
-let yetToSell;
-yetToSell = nrOfTvStockBought - nrOfTvSold
-console.log(yetToSell);
-
-const qtySell = document.getElementById("qty-sell");
-console.log(qtySell);
-qtySell.textContent = yetToSell;
 
